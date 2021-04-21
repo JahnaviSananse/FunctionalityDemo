@@ -83,13 +83,7 @@ const Signup = props => {
         <View style={styles.loginButton}>
           <TouchableOpacity
             onPress={() => {
-              if (validateForgot()) {
-                props.dataFetch({
-                  email: email,
-                  pass: pass,
-                  navigation: props.navigation,
-                });
-              }
+              props.navigation.navigate('Login');
             }}>
             <Text style={styles.loginText}> SIGN UP </Text>
           </TouchableOpacity>

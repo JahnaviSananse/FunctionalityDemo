@@ -15,8 +15,8 @@ const Router = () => {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Signup">
         <Stack.Screen name="Splash" component={Splash} />
-        <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Signup" component={Signup} />
+        <Stack.Screen name="Login" component={Login} />
       </Stack.Navigator>
     </NavigationContainer>
   );
