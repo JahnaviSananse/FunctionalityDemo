@@ -19,9 +19,11 @@ import {
 } from 'react-native';
 Image;
 
-const Splash = () => {
+const Splash = ({navigation}) => {
   useEffect(() => {
-    setTimeout(() => {}, 2000);
+    setTimeout(() => {
+      navigation.navigate('Login');
+    }, 2000);
   }, []);
   return (
     <SafeAreaView>
