@@ -1,4 +1,6 @@
-const ServerCall = ({method, url, request, data}) => {
+import axios from 'axios';
+
+const ServerCall = ({method, url, data}) => {
   return axios({
     method: method,
     url: url,
