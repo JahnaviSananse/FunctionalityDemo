@@ -22,7 +22,7 @@ Image;
 const Splash = ({navigation}) => {
   useEffect(() => {
     setTimeout(() => {
-      navigation.navigate('Login');
+      navigation.navigate('Signup');
     }, 2000);
   }, []);
   return (

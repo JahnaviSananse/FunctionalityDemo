@@ -7,17 +7,6 @@ const INITIAL_DATA = {
   isLogged: false,
 };
 
-const isLogged = (state, actionData) => {
-  if (
-    state.authUser[0].email === actionData.email &&
-    state.authUser[0].password === actionData.password
-  ) {
-    return true;
-  } else {
-    return false;
-  }
-};
-
 const authReducer = (state = INITIAL_DATA, action) => {
   switch (action.type) {
     case SIGNUP_DATA.SIGNUP_SUCCESS:
@@ -28,7 +17,7 @@ const authReducer = (state = INITIAL_DATA, action) => {
     case LOGINDATA.LOGIN_SUCCESS:
       return {
         ...state,
-        isLogged: isLogged(state, action.payload),
+        isLogged: action.payload,
       };
 
     default:

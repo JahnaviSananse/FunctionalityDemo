@@ -9,6 +9,8 @@ import {
   ActivityIndicator,
   TouchableOpacity,
 } from 'react-native';
+import {connect} from 'react-redux';
+import {SignupSuccess} from '../../../redux/actions/auth.actions';
 
 const Signup = props => {
   const [email, setEmail] = useState('');
@@ -39,6 +41,13 @@ const Signup = props => {
 
     if (isValidate === false) {
       alert(message);
+    }
+  };
+
+  const signupVerify = () => {
+    if (validateForgot) {
+      props.dataStore({fname: fname, email: email, pass: pass});
+      props.navigation.navigate('Login');
     }
   };
 
@@ -74,7 +83,7 @@ const Signup = props => {
         <View style={{alignSelf: 'flex-end'}}>
           <TouchableOpacity
             onPress={() => {
-              props.navigation.navigate('signin_nav');
+              props.navigation.navigate('Login');
             }}>
             <Text style={styles.forgotPass}> Already have an Account? </Text>
           </TouchableOpacity>
@@ -83,7 +92,7 @@ const Signup = props => {
         <View style={styles.loginButton}>
           <TouchableOpacity
             onPress={() => {
-              props.navigation.navigate('Login');
+              signupVerify();
             }}>
             <Text style={styles.loginText}> SIGN UP </Text>
           </TouchableOpacity>
@@ -143,6 +152,9 @@ const Signup = props => {
     </>
   );
 };
+const mapDispatchToProps = dispatch => ({
+  dataStore: data => dispatch(SignupSuccess(data)),
+});
 
 const styles = StyleSheet.create({
   textinput: {
@@ -243,4 +255,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Signup;
+export default connect(null, mapDispatchToProps)(Signup);

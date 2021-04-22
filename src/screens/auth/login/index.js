@@ -8,7 +8,9 @@ import {
   TextInput,
   ActivityIndicator,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
+import {connect} from 'react-redux';
 
 const Login = props => {
   const [email, setEmail] = useState('');
@@ -39,6 +41,20 @@ const Login = props => {
     }
   };
 
+  const loginVerify = () => {
+    if (validateForgot) {
+      console.log('props.authUser', props.authUser);
+      if (
+        props.authUser[0].email === email &&
+        props.authUser[0].pass === pass
+      ) {
+        props.navigation.navigate('Home');
+      } else {
+        alert('Invalid Details');
+      }
+    }
+  };
+
   const renderSignin = () => {
     return (
       <View>
@@ -62,7 +78,7 @@ const Login = props => {
         <View style={{alignSelf: 'flex-end'}}>
           <TouchableOpacity
             onPress={() => {
-              props.navigation.navigate('fogotpass_nav');
+              Alert.alert('Alert', 'Forget Password ?');
             }}>
             <Text style={styles.forgotPass}> Forgot Password? </Text>
           </TouchableOpacity>
@@ -71,13 +87,7 @@ const Login = props => {
         <View style={styles.signinButton}>
           <TouchableOpacity
             onPress={() => {
-              if (validateForgot()) {
-                props.loginRequest({
-                  email: email,
-                  pass: pass,
-                  navigation: props.navigation,
-                });
-              }
+              loginVerify();
             }}>
             <Text style={styles.signinText}> SIGN IN </Text>
           </TouchableOpacity>
@@ -137,6 +147,9 @@ const Login = props => {
   );
 };
 
+const mapStateToProps = state => ({
+  authUser: state.dataFetch.authUser,
+});
 const styles = StyleSheet.create({
   textinput: {
     backgroundColor: 'white',
@@ -236,4 +249,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+export default connect(mapStateToProps)(Login);
