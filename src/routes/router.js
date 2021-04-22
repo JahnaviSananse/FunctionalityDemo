@@ -8,6 +8,8 @@ import Splash from '../screens/auth/splash/splash';
 import Login from '../screens/auth/login';
 import Signup from '../screens/auth/signup';
 import Home from '../screens/App/Home/Home.index';
+import Post from '../screens/App/Post/Post.index';
+import Choice from '../screens/App/choice/choice.index';
 
 const Stack = createStackNavigator();
 
@@ -19,6 +21,8 @@ const Router = () => {
         <Stack.Screen name="Signup" component={Signup} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Post" component={Post} />
+        <Stack.Screen name="Choice" component={Choice} />
       </Stack.Navigator>
     </NavigationContainer>
   );

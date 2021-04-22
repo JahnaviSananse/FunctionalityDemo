@@ -1,5 +1,12 @@
 import React, {useEffect} from 'react';
-import {FlatList, SafeAreaView, Text, View} from 'react-native';
+import {
+  FlatList,
+  SafeAreaView,
+  Text,
+  View,
+  StyleSheet,
+  Image,
+} from 'react-native';
 import {connect} from 'react-redux';
 import {DataList} from '../../../redux/actions/loadPost.actions';
 
@@ -11,11 +18,20 @@ const Home = props => {
   const renderDataList = ({item}) => {
     return (
       <>
-        <View style={{margin: 10}}>
+        <Image
+          style={styles.stretch}
+          source={require('../../../assets/images/right-arrow.png')}
+        />
+        <View style={{marginLeft: 20}}>
           <Text style={{color: 'red'}}> {item.title}</Text>
           <Text> {item.body}</Text>
-          <View style={{borderColor: 'black', borderBottomWidth: 2}}></View>
         </View>
+        <View
+          style={{
+            borderColor: 'black',
+            borderBottomWidth: 2,
+            top: 5,
+          }}></View>
       </>
     );
   };
@@ -34,6 +50,14 @@ const Home = props => {
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  stretch: {
+    width: 15,
+    height: 15,
+    top: 20,
+  },
+});
 
 const mapStateToProps = state => ({
   dataFetch: state.dataPost.dataRespones,

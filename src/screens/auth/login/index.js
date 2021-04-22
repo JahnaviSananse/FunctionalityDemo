@@ -42,17 +42,14 @@ const Login = props => {
   };
 
   const loginVerify = () => {
-    if (validateForgot()) {
-      console.log('props.authUser', props.authUser);
-      if (
-        props.authUser[0].email === email &&
-        props.authUser[0].pass === pass
-      ) {
-        props.navigation.navigate('Home');
-      } else {
-        alert('Invalid Details');
-      }
+    // if (validateForgot()) {
+    console.log('props.authUser', props.authUser);
+    if (props.authUser[0].email === email && props.authUser[0].pass === pass) {
+      props.navigation.navigate('Choice');
+    } else {
+      alert('Invalid Details');
     }
+    // }
   };
 
   const renderSignin = () => {

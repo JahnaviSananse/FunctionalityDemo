@@ -91,9 +91,9 @@ const Signup = props => {
         <View style={styles.loginButton}>
           <TouchableOpacity
             onPress={() => {
-              if (validateForgot()) {
-                signupVerify();
-              }
+              // if (validateForgot()) {
+              signupVerify();
+              // }
             }}>
             <Text style={styles.loginText}> SIGN UP </Text>
           </TouchableOpacity>
