@@ -42,7 +42,7 @@ const Login = props => {
   };
 
   const loginVerify = () => {
-    if (validateForgot) {
+    if (validateForgot()) {
       console.log('props.authUser', props.authUser);
       if (
         props.authUser[0].email === email &&

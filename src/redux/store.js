@@ -3,9 +3,11 @@ import authReducer from './reducers/auth.reducer';
 import {applyMiddleware} from 'redux'; //to track redux
 import logger from 'redux-logger'; //to track redux
 import thunk from 'redux-thunk';
+import loadPostReducer from './reducers/loadPost.reducer';
 
 const rootReducer = combineReducers({
   dataFetch: authReducer,
+  dataPost: loadPostReducer,
 });
 const configureStore = () => {
   const middleware = [];

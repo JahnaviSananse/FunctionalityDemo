@@ -18,6 +18,7 @@ const Signup = props => {
   const [fname, setFname] = useState('');
 
   const validateForgot = () => {
+    // console.log('hi>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
     let isValidate = false;
     let mailFormat = new RegExp(
       /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i,
@@ -45,10 +46,8 @@ const Signup = props => {
   };
 
   const signupVerify = () => {
-    if (validateForgot) {
-      props.dataStore({fname: fname, email: email, pass: pass});
-      props.navigation.navigate('Login');
-    }
+    props.dataStore({fname: fname, email: email, pass: pass});
+    props.navigation.navigate('Login');
   };
 
   const renderSignup = () => {
@@ -92,7 +91,9 @@ const Signup = props => {
         <View style={styles.loginButton}>
           <TouchableOpacity
             onPress={() => {
-              signupVerify();
+              if (validateForgot()) {
+                signupVerify();
+              }
             }}>
             <Text style={styles.loginText}> SIGN UP </Text>
           </TouchableOpacity>
