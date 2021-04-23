@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState, useCallback} from 'react';
 import {
   FlatList,
-  SafeAreaView,
+  RefreshControl,
   Text,
   View,
   StyleSheet,
@@ -12,10 +12,19 @@ import {connect} from 'react-redux';
 import {DataList} from '../../../redux/actions/loadPost.actions';
 
 const Home = props => {
+  const [refreshing, setRefreshing] = useState(false);
+
   useEffect(() => {
     props.DataList();
   }, []);
-
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      props.DataList();
+      setRefreshing(false);
+    }, 3000);
+    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
+  }, []);
   const renderDataList = ({item}) => {
     return (
       <>
@@ -61,7 +70,13 @@ const Home = props => {
           <ActivityIndicator size="large" color="#0000ff" />
         </View>
       ) : (
-        <FlatList data={props.dataFetch} renderItem={renderDataList} />
+        <FlatList
+          data={props.dataFetch}
+          renderItem={renderDataList}
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          }
+        />
       )}
     </>
   );
