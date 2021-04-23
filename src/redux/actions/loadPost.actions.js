@@ -3,24 +3,65 @@ import ServerCall from '../../api/serverCall';
 import {POST_URL} from '../../constants/api';
 import {ItemPost, LoadPost} from '../types/loadPost.types';
 
+// export const DataList = () => {
+//   return dispatch => {
+//     returnToDispatch(dispatch, LoadPost.LOADPOST_START);
+//     ServerCall({method: 'get', url: POST_URL})
+//       // axios.get(POST_URL)
+//       .then(response => {
+//         console.log('API RESPONSE>>>>>', response.data.data);
+//         returnToDispatch(
+//           dispatch,
+//           LoadPost.LOADPOST_SUCCESS,
+//           response.data.data,
+//         );
+//       })
+//       .catch(error => {
+//         alert(error);
+//         returnToDispatch(dispatch, LoadPost.LOADPOST_FAIL, error);
+//       });
+//   };
+// };
+
 export const DataList = () => {
-  return dispatch => {
-    ServerCall({method: 'get', url: POST_URL})
-      // axios.get(POST_URL)
-      .then(response => {
+  return async dispatch => {
+    try {
+      returnToDispatch(dispatch, LoadPost.LOADPOST_START);
+      const data = await ServerCall({method: 'get', url: POST_URL});
+      const response = await data.data;
+      console.log('hxhjsvhjsa<<<<<>>>>', response.data);
+      setTimeout(() => {
         returnToDispatch(dispatch, LoadPost.LOADPOST_SUCCESS, response.data);
-        return;
-      });
+      }, 3000);
+    } catch (error) {
+      alert(error);
+      setTimeout(() => {
+        returnToDispatch(dispatch, LoadPost.LOADPOST_FAIL, error);
+      }, 1500);
+    }
   };
 };
 
 export const DataPost = item => {
-  return dispatch => {
-    console.log('cdfdfvrfv', item);
-    ServerCall({method: 'post', url: POST_URL, data: item}).then(response => {
-      returnToDispatch(dispatch, ItemPost.ITEMPOST_SUCCESS, response.data);
-      return;
-    });
+  return async dispatch => {
+    try {
+      returnToDispatch(dispatch, ItemPost.ITEMPOST_START);
+
+      const data = await ServerCall({
+        method: 'post',
+        url: POST_URL,
+        data: item,
+      });
+      const response = await data.data;
+      setTimeout(() => {
+        returnToDispatch(dispatch, ItemPost.ITEMPOST_SUCCESS, response);
+      }, 3000);
+    } catch (error) {
+      alert(error);
+      setTimeout(() => {
+        returnToDispatch(dispatch, ItemPost.ITEMPOST_STOP, error);
+      }, 2000);
+    }
   };
 };
 

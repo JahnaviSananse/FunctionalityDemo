@@ -22,15 +22,18 @@ const Home = props => {
           style={styles.stretch}
           source={require('../../../assets/images/right-arrow.png')}
         />
-        <View style={{marginLeft: 20}}>
-          <Text style={{color: 'red'}}> {item.title}</Text>
-          <Text> {item.body}</Text>
+        <View style={{marginLeft: '10%'}}>
+          {console.log('hbchjvdcyjsdvchjsdc', item)}
+          <Text style={{color: 'red'}}> {item.email}</Text>
+          <Text> {item.first_name}</Text>
+          <Text> {item.last_name}</Text>
+          <Image style={styles.img} source={{uri: item.avatar}} />
         </View>
         <View
           style={{
             borderColor: 'black',
             borderBottomWidth: 2,
-            top: 5,
+            // top: 5,
           }}></View>
       </>
     );
@@ -45,6 +48,7 @@ const Home = props => {
               return <Text>{value.title + ' ' + value.body}</Text>;
             })
           : null} */}
+        {console.log('dataFetch>>>>>>>>>>>>>>>>>>>>>>>', props.dataFetch)}
         <FlatList data={props.dataFetch} renderItem={renderDataList} />
       </SafeAreaView>
     </>
@@ -56,6 +60,15 @@ const styles = StyleSheet.create({
     width: 15,
     height: 15,
     top: 20,
+    left: '3%',
+  },
+  img: {
+    width: 70,
+    height: 70,
+    resizeMode: 'stretch',
+    left: '75%',
+    bottom: '40%',
+    borderRadius: 20,
   },
 });
 

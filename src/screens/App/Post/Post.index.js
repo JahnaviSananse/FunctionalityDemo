@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import {
-  FlatList,
+  View,
   SafeAreaView,
   TextInput,
   Button,
@@ -13,6 +13,7 @@ import {connect} from 'react-redux';
 import {DataPost} from '../../../redux/actions/loadPost.actions';
 const Post = props => {
   const [item, setItem] = useState('');
+  const [job, setJob] = useState('');
   // useEffect(() => {
   //   props.DataPost(item);
   // }, []);
@@ -21,23 +22,52 @@ const Post = props => {
     <>
       <SafeAreaView>
         <TextInput
-          style={styles.input}
+          placeholder="NAME"
+          style={styles.name}
           onChangeText={text => {
             setItem(text);
           }}
         />
+        <TextInput
+          placeholder="JOB"
+          style={styles.job}
+          onChangeText={text => {
+            setJob(text);
+          }}
+        />
         <Button
           title=" Post Data"
-          onPress={() => props.DataPost({name: item})}
+          onPress={() => props.DataPost({name: item, job: job})}
         />
-        <Text>{props.dataGet}</Text>
+        {props.dataGet
+          ? props.dataGet.map((value, index) => {
+              return (
+                <View style={{backgroundColor: 'yellow', margin: 5}}>
+                  <Text style={{fontSize: 20}}>
+                    {'Name : ' + value.name + '\n' + 'JOB : ' + value.job}
+                  </Text>
+                  <View
+                    style={{
+                      borderColor: 'black',
+                      borderBottomWidth: 2,
+                      // top: 5,
+                    }}></View>
+                </View>
+              );
+            })
+          : null}
       </SafeAreaView>
     </>
   );
 };
 
 const styles = StyleSheet.create({
-  input: {
+  name: {
+    height: 40,
+    margin: 12,
+    borderWidth: 2,
+  },
+  job: {
     height: 40,
     margin: 12,
     borderWidth: 2,
