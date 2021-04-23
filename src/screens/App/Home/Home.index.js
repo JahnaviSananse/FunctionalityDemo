@@ -5,6 +5,7 @@ import {
   Text,
   View,
   StyleSheet,
+  ActivityIndicator,
   Image,
 } from 'react-native';
 import {connect} from 'react-redux';
@@ -41,16 +42,27 @@ const Home = props => {
 
   return (
     <>
-      <SafeAreaView>
-        {/* {props.dataFetch
-          ? props.dataFetch.map((value, index) => {
-              console.log('dasdvsfs', value);
-              return <Text>{value.title + ' ' + value.body}</Text>;
-            })
-          : null} */}
-        {console.log('dataFetch>>>>>>>>>>>>>>>>>>>>>>>', props.dataFetch)}
+      {props.loading ? (
+        <View
+          style={{
+            height: '100%',
+            flex: 1,
+            // backgroundColor: 'black',
+            backgroundColor: 'rgba(237, 239, 242,0.5)',
+
+            position: 'absolute',
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <ActivityIndicator size="large" color="#0000ff" />
+        </View>
+      ) : (
         <FlatList data={props.dataFetch} renderItem={renderDataList} />
-      </SafeAreaView>
+      )}
     </>
   );
 };
@@ -74,6 +86,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => ({
   dataFetch: state.dataPost.dataRespones,
+  loading: state.dataPost.isLoading,
 });
 // const mapDispatchToProps = dispatch => ({
 //   data: () => dispatch(DataList()),

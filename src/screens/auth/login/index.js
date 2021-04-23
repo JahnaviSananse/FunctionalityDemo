@@ -11,6 +11,7 @@ import {
   Alert,
 } from 'react-native';
 import {connect} from 'react-redux';
+import {LoginSuccess} from '../../../redux/actions/auth.actions';
 
 const Login = props => {
   const [email, setEmail] = useState('');
@@ -45,7 +46,10 @@ const Login = props => {
     // if (validateForgot()) {
     console.log('props.authUser', props.authUser);
     if (props.authUser[0].email === email && props.authUser[0].pass === pass) {
-      props.navigation.navigate('Choice');
+      props.LoginSuccess();
+      setTimeout(() => {
+        props.navigation.navigate('Choice');
+      }, 2000);
     } else {
       alert('Invalid Details');
     }
@@ -111,7 +115,7 @@ const Login = props => {
 
   return (
     <>
-      {props.loading ? (
+      {props.Loading ? (
         <View
           style={{
             height: '100%',
@@ -146,6 +150,7 @@ const Login = props => {
 
 const mapStateToProps = state => ({
   authUser: state.dataFetch.authUser,
+  Loading: state.dataFetch.isLoading,
 });
 const styles = StyleSheet.create({
   textinput: {
@@ -246,4 +251,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps, {LoginSuccess})(Login);

@@ -32,7 +32,7 @@ export const DataList = () => {
       console.log('hxhjsvhjsa<<<<<>>>>', response.data);
       setTimeout(() => {
         returnToDispatch(dispatch, LoadPost.LOADPOST_SUCCESS, response.data);
-      }, 3000);
+      }, 1500);
     } catch (error) {
       alert(error);
       setTimeout(() => {
@@ -46,7 +46,6 @@ export const DataPost = item => {
   return async dispatch => {
     try {
       returnToDispatch(dispatch, ItemPost.ITEMPOST_START);
-
       const data = await ServerCall({
         method: 'post',
         url: POST_URL,
@@ -55,7 +54,7 @@ export const DataPost = item => {
       const response = await data.data;
       setTimeout(() => {
         returnToDispatch(dispatch, ItemPost.ITEMPOST_SUCCESS, response);
-      }, 3000);
+      }, 1500);
     } catch (error) {
       alert(error);
       setTimeout(() => {

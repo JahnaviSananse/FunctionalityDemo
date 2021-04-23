@@ -120,7 +120,7 @@ const Signup = props => {
 
   return (
     <>
-      {props.loading ? (
+      {props.Loading ? (
         <View
           style={{
             height: '100%',
@@ -155,6 +155,10 @@ const Signup = props => {
 };
 const mapDispatchToProps = dispatch => ({
   dataStore: data => dispatch(SignupSuccess(data)),
+});
+const mapStateToProps = state => ({
+  Loading: state.dataFetch.isLoading,
+  // loading: state.dataPost.isLoading,
 });
 
 const styles = StyleSheet.create({
@@ -256,4 +260,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default connect(null, mapDispatchToProps)(Signup);
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

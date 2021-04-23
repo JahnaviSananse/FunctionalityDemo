@@ -6,18 +6,19 @@ import Router from '../routes/router';
 const Root = props => {
   return (
     <>
-      {console.log('kdbhlbjhbjhbjhb,bjhbchjsbchjbeshjcbshdc', props.Loading)}
-      {props.Loading ? (
-        <ActivityIndicator size="large" color="#00ff00" />
-      ) : (
-        <Router />
-      )}
+      {/* {console.log('kdbhlbjhbjhbjhb,bjhbchjsbchjbeshjcbshdc', props.Loading)}
+      {props.loading ? (
+        <ActivityIndicator size="large" color="black" />
+      ) : ( */}
+      <Router />
+      {/* )} */}
     </>
   );
 };
 
-const mapStateToProps = state => ({
-  Loading: state.dataFetch.isLoading,
-});
+// const mapStateToProps = state => ({
+//   Loading: state.dataFetch.isLoading,
+//   loading: state.dataPost.isLoading,
+// });
 // export default Root;
-export default connect(mapStateToProps)(Root);
+export default Root;
