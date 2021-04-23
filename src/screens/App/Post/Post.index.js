@@ -60,7 +60,7 @@ const Post = props => {
       ) : props.dataGet ? (
         props.dataGet.map((value, index) => {
           return (
-            <View style={{backgroundColor: 'yellow', margin: 10}}>
+            <View style={{backgroundColor: 'yellow', margin: 5, padding: 5}}>
               <Text style={{fontSize: 20}}>
                 {'Name : ' + value.name + '\n' + 'JOB : ' + value.job}
               </Text>
