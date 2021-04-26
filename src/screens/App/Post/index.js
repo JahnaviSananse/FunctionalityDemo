@@ -4,7 +4,6 @@ import {
   View,
   SafeAreaView,
   TextInput,
-  Button,
   Text,
   StyleSheet,
   ActivityIndicator,
@@ -12,6 +11,8 @@ import {
 import {connect} from 'react-redux';
 import {DataPost} from '../../../redux/actions/post';
 import styles from '../Post/styles';
+import TextField from '../../../components/TextField/index';
+import Button from '../../../components/Button';
 
 const Post = props => {
   const [item, setItem] = useState('');
@@ -22,24 +23,50 @@ const Post = props => {
 
   return (
     <>
-      <TextInput
+      {/* <TextInput
         placeholder="NAME"
         style={styles.name}
         onChangeText={text => {
           setItem(text);
         }}
+      /> */}
+
+      <TextField
+        value={item}
+        change={text => setItem(text)}
+        placeholder={' NAME'}
       />
-      <TextInput
+
+      {/* <TextInput
         placeholder="JOB"
         style={styles.job}
         onChangeText={text => {
           setJob(text);
         }}
+      /> */}
+      <TextField
+        value={job}
+        change={text => setJob(text)}
+        placeholder={' JOB'}
       />
-      <Button
-        title=" Post Data"
-        onPress={() => props.DataPost({name: item, job: job})}
-      />
+
+      <View
+        style={{
+          alignItems: 'center',
+          justifyContent: 'center',
+          // backgroundColor: 'yellow',
+          height: '20%',
+        }}>
+        <Button
+          title=" Post Data"
+          onPress={() => {
+            props.DataPost({name: item, job: job});
+            setItem(' ');
+            setJob(' ');
+            return;
+          }}
+        />
+      </View>
 
       {props.loading ? (
         <View style={styles.loadingView}>
@@ -49,7 +76,7 @@ const Post = props => {
         props.dataGet.map((value, index) => {
           return (
             <View style={styles.backgroundView}>
-              <Text style={styles.textFormat}>
+              <Text key={index} style={styles.textFormat}>
                 {'Name : ' + value.name + '\n' + 'JOB : ' + value.job}
               </Text>
               <View style={styles.borderView}></View>

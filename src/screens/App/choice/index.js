@@ -6,26 +6,35 @@ import {
   View,
   StyleSheet,
   Image,
-  Button,
 } from 'react-native';
 import styles from '../choice/style';
+import Button from '../../../components/Button/index';
 
 const Choice = ({navigation}) => {
   return (
     <>
       <SafeAreaView>
-        <Button
-          title=" Get List"
-          onPress={() => {
-            navigation.navigate('Home');
-          }}
-        />
-        <Button
-          title="Post Item"
-          onPress={() => {
-            navigation.navigate('Post');
-          }}
-        />
+        <View
+          style={{
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: 'lightgrey',
+            height: '100%',
+          }}>
+          <Button
+            // type="fill"
+            title=" Get List"
+            onPress={() => {
+              navigation.navigate('Home');
+            }}
+          />
+          <Button
+            title="Post Item"
+            onPress={() => {
+              navigation.navigate('Post');
+            }}
+          />
+        </View>
       </SafeAreaView>
     </>
   );
