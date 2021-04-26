@@ -1,11 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React, {useEffect} from 'react';
 import {
   SafeAreaView,
@@ -17,8 +9,7 @@ import {
   Image,
   View,
 } from 'react-native';
-Image;
-
+import styles from '../splash/style';
 const Splash = ({navigation}) => {
   useEffect(() => {
     setTimeout(() => {
@@ -34,12 +25,5 @@ const Splash = ({navigation}) => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  tinyLogo: {
-    width: '100%',
-    height: '100%',
-  },
-});
 
 export default Splash;
