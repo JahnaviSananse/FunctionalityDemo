@@ -1,4 +1,4 @@
-import {LoadPost, ItemPost} from '../types/loadPost.types';
+import {LoadPost, ItemPost} from '../types/loadPost';
 
 const INITIAL_DATA = {
   dataRespones: [],

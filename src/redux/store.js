@@ -1,9 +1,9 @@
 import {combineReducers, createStore} from 'redux';
-import authReducer from './reducers/auth.reducer';
+import authReducer from './reducers/auth';
 import {applyMiddleware} from 'redux'; //to track redux
 import logger from 'redux-logger'; //to track redux
 import thunk from 'redux-thunk';
-import loadPostReducer from './reducers/loadPost.reducer';
+import loadPostReducer from './reducers/post';
 
 const rootReducer = combineReducers({
   dataFetch: authReducer,

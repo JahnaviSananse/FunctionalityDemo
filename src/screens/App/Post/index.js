@@ -10,7 +10,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import {connect} from 'react-redux';
-import {DataPost} from '../../../redux/actions/loadPost.actions';
+import {DataPost} from '../../../redux/actions/post';
 import styles from '../Post/styles';
 
 const Post = props => {

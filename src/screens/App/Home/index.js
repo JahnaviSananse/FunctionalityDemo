@@ -9,7 +9,7 @@ import {
   Image,
 } from 'react-native';
 import {connect} from 'react-redux';
-import {DataList} from '../../../redux/actions/loadPost.actions';
+import {DataList} from '../../../redux/actions/post';
 import styles from '../Home/styles';
 
 const Home = props => {

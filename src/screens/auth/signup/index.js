@@ -10,7 +10,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {connect} from 'react-redux';
-import {SignupSuccess} from '../../../redux/actions/auth.actions';
+import {SignupSuccess} from '../../../redux/actions/auth';
 import styles from '../signup/style';
 
 const Signup = props => {

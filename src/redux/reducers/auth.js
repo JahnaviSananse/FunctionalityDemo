@@ -1,4 +1,4 @@
-import {LOGINDATA, SIGNUP_DATA} from '../types/auth.types';
+import {LOGINDATA, SIGNUP_DATA} from '../types/auth';
 
 const INITIAL_DATA = {
   authUser: [],

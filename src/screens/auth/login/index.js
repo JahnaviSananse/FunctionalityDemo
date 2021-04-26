@@ -11,7 +11,7 @@ import {
   Alert,
 } from 'react-native';
 import {connect} from 'react-redux';
-import {LoginSuccess} from '../../../redux/actions/auth.actions';
+import {LoginSuccess} from '../../../redux/actions/auth';
 import styles from '../login/style';
 
 import {validateForgot} from '../../../utility/util';

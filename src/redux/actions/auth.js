@@ -1,4 +1,4 @@
-import {LOGINDATA, SIGNUP_DATA} from '../types/auth.types';
+import {LOGINDATA, SIGNUP_DATA} from '../types/auth';
 
 // export const LoginSuccess = data => ({
 //   type: LOGINDATA.LOGIN_SUCCESS,

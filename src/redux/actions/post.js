@@ -1,7 +1,7 @@
 import axios from 'axios';
 import ServerCall from '../../api/serverCall';
 import {POST_URL} from '../../constants/api';
-import {ItemPost, LoadPost} from '../types/loadPost.types';
+import {ItemPost, LoadPost} from '../types/loadPost';
 
 // export const DataList = () => {
 //   return dispatch => {
