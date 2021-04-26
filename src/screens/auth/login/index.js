@@ -13,40 +13,16 @@ import {
 import {connect} from 'react-redux';
 import {LoginSuccess} from '../../../redux/actions/auth';
 import styles from '../login/style';
+import TextField from '../../../components/TextField/index';
 
-import {validateForgot} from '../../../utility/util';
+import {loginValidate} from '../../../utility/util';
 
 const Login = props => {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
 
-  const validateForgot = () => {
-    let isValidate = false;
-    let mailFormat = new RegExp(
-      /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i,
-    );
-    let message = '';
-    if (email === '') {
-      message = 'please enter your email address!';
-    } else if (!mailFormat.test(email)) {
-      isValidate = false;
-      message = 'Please enter valid email address.';
-    } else if (pass === '') {
-      message = 'please enter your password!';
-    } else if (pass.length < 5) {
-      isValidate = false;
-      message = 'Please add at least 5 charachter.';
-    } else {
-      return true;
-    }
-
-    if (isValidate === false) {
-      alert(message);
-    }
-  };
-
   const loginVerify = () => {
-    // if (validateForgot()) {
+    // if (loginValidate(email, pass)) {
     console.log('props.authUser', props.authUser);
     if (props.authUser[0].email === email && props.authUser[0].pass === pass) {
       props.LoginSuccess();
@@ -62,23 +38,36 @@ const Login = props => {
   const renderSignin = () => {
     return (
       <View>
-        <Text style={styles.headText}> Email Address : </Text>
-
-        <TextInput
+        {/* <Text style={styles.headText}> Email Address : </Text> */}
+        {/* <TextInput
           onChangeText={text => setEmail(text)}
           value={email}
           placeholder={' abc@gmail.com '}
           style={styles.textinput}
+        /> */}
+
+        <TextField
+          title={'Email Address'}
+          change={text => setEmail(text)}
+          value={email}
+          placeholder={' abc@gmail.com '}
         />
-
+        {/* 
         <Text style={styles.headText}> Password : </Text>
-
         <TextInput
           onChangeText={text => setPass(text)}
           value={pass}
           placeholder={' Enter Here '}
           style={styles.textinput}
+        /> */}
+
+        <TextField
+          title={'Password'}
+          change={text => setPass(text)}
+          value={pass}
+          placeholder={' Enter Here '}
         />
+
         <View style={{alignSelf: 'flex-end'}}>
           <TouchableOpacity
             onPress={() => {

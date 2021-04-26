@@ -12,39 +12,13 @@ import {
 import {connect} from 'react-redux';
 import {SignupSuccess} from '../../../redux/actions/auth';
 import styles from '../signup/style';
+import TextField from '../../../components/TextField';
+import {signupValidate} from '../../../utility/util';
 
 const Signup = props => {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
   const [fname, setFname] = useState('');
-
-  const validateForgot = () => {
-    // console.log('hi>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
-    let isValidate = false;
-    let mailFormat = new RegExp(
-      /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i,
-    );
-    let message = '';
-    if (fname === '') {
-      message = 'please enter your full name!';
-    } else if (email === '') {
-      message = 'please enter your email address!';
-    } else if (!mailFormat.test(email)) {
-      isValidate = false;
-      message = 'Please enter valid email address.';
-    } else if (pass === '') {
-      message = 'please enter your password!';
-    } else if (pass.length < 5) {
-      isValidate = false;
-      message = 'Please add at least 5 charachter.';
-    } else {
-      return true;
-    }
-
-    if (isValidate === false) {
-      alert(message);
-    }
-  };
 
   const signupVerify = () => {
     props.dataStore({fname: fname, email: email, pass: pass});
@@ -54,32 +28,51 @@ const Signup = props => {
   const renderSignup = () => {
     return (
       <View>
-        <Text style={styles.headText}> Full Name : </Text>
-
+        {/* <Text style={styles.headText}> Full Name : </Text>
         <TextInput
           onChangeText={text => setFname(text)}
           value={fname}
           placeholder={' Enter Your Name '}
           style={styles.textinput}
         />
+         */}
+        <TextField
+          title={'Full Name : '}
+          change={text => setFname(text)}
+          value={fname}
+          placeholder={'Enter Your Name'}
+        />
 
-        <Text style={styles.headText}> Email Address : </Text>
-
+        {/* <Text style={styles.headText}> Email Address : </Text>
         <TextInput
           onChangeText={text => setEmail(text)}
           value={email}
           placeholder={' abc@gmail.com '}
           style={styles.textinput}
+        /> */}
+
+        <TextField
+          title={' Email Address :'}
+          change={text => setEmail(text)}
+          value={email}
+          placeholder={' abc@gmail.com '}
         />
 
-        <Text style={styles.headText}> Password : </Text>
-
+        {/* <Text style={styles.headText}> Password : </Text>
         <TextInput
           onChangeText={text => setPass(text)}
           value={pass}
           placeholder={' Enter Here '}
           style={styles.textinput}
+        /> */}
+
+        <TextField
+          title={'Password :'}
+          change={text => setPass(text)}
+          value={pass}
+          placeholder={'  Enter Here '}
         />
+
         <View style={{alignSelf: 'flex-end'}}>
           <TouchableOpacity
             onPress={() => {
@@ -92,7 +85,7 @@ const Signup = props => {
         <View style={styles.loginButton}>
           <TouchableOpacity
             onPress={() => {
-              // if (validateForgot()) {
+              // if (signupValidate(email, pass, fname)) {
               signupVerify();
               // }
             }}>
