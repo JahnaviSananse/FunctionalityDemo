@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import THEME from '../../../constants/colors';
 const styles = StyleSheet.create({
   stretch: {
     width: 15,
@@ -20,11 +21,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   borderView: {
-    borderColor: 'black',
+    borderColor: THEME.BLACK,
     borderBottomWidth: 2,
     // top: 5,
   },
-  emailText: {color: 'red'},
+  emailText: {color: THEME.RED},
   img: {
     width: 70,
     height: 70,

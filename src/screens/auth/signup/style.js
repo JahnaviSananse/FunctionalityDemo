@@ -1,20 +1,20 @@
 import {StyleSheet} from 'react-native';
-
+import THEME from '../../../constants/colors';
 const styles = StyleSheet.create({
   container: {
     height: '100%',
-    backgroundColor: 'white',
+    backgroundColor: THEME.WHITE,
     //justifyContent: 'center',
   },
   textinput: {
-    backgroundColor: 'white',
+    backgroundColor: THEME.WHITE,
     paddingHorizontal: 10,
     width: '90%',
     fontSize: 15,
     fontWeight: 'bold',
-    color: 'black',
+    color: THEME.BLACK,
     marginLeft: 10,
-    borderColor: 'black',
+    borderColor: THEME.BLACK,
     borderWidth: 2,
   },
   loadingView: {
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   headView: {
-    backgroundColor: 'white',
+    backgroundColor: THEME.WHITE,
     height: 90,
     flexDirection: 'row',
   },
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginLeft: 90,
     left: 40,
-    backgroundColor: 'green',
+    backgroundColor: THEME.GREEN,
     borderRadius: 10,
   },
   signinButton: {
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginLeft: 90,
     left: 40,
-    backgroundColor: 'green',
+    backgroundColor: THEME.GREEN,
     borderRadius: 10,
   },
   loginGuest: {
@@ -70,15 +70,15 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginLeft: 90,
     left: 40,
-    backgroundColor: 'white',
-    borderColor: 'green',
+    backgroundColor: THEME.WHITE,
+    borderColor: THEME.GREEN,
     borderWidth: 2,
     borderRadius: 10,
   },
   loginText: {
     height: 50,
     fontSize: 20,
-    color: 'black',
+    color: THEME.BLACK,
     fontWeight: 'bold',
     padding: 10,
     left: 35,
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
   signinText: {
     height: 50,
     fontSize: 20,
-    color: 'black',
+    color: THEME.BLACK,
     fontWeight: 'bold',
     padding: 10,
     left: 35,
@@ -94,13 +94,13 @@ const styles = StyleSheet.create({
   guestText: {
     height: 50,
     fontSize: 20,
-    color: 'green',
+    color: THEME.GREEN,
     fontWeight: 'bold',
     padding: 10,
     left: 30,
   },
   forgotPass: {
-    color: 'red',
+    color: THEME.RED,
     marginRight: 30,
     marginTop: 10,
   },
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     marginTop: 35,
     top: '3%',
     flexDirection: 'row',
-    backgroundColor: 'white',
+    backgroundColor: THEME.WHITE,
     alignSelf: 'center',
   },
   signupText: {

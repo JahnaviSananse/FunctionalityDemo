@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import THEME from '../../../constants/colors';
 const styles = StyleSheet.create({
   name: {
     height: 40,
@@ -7,12 +8,12 @@ const styles = StyleSheet.create({
   },
   textFormat: {fontSize: 20},
   backgroundView: {
-    backgroundColor: 'yellow',
+    backgroundColor: THEME.YELLOW,
     margin: 5,
     padding: 5,
   },
   borderView: {
-    borderColor: 'black',
+    borderColor: THEME.BLACK,
     borderBottomWidth: 2,
     // top: 5,
   },
