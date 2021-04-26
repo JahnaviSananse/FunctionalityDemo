@@ -8,8 +8,7 @@ import {
   Image,
   Button,
 } from 'react-native';
-import {connect} from 'react-redux';
-import {DataList} from '../../../redux/actions/loadPost.actions';
+import styles from '../choice/style';
 
 const Choice = ({navigation}) => {
   return (
@@ -31,7 +30,5 @@ const Choice = ({navigation}) => {
     </>
   );
 };
-
-const styles = StyleSheet.create({});
 
 export default Choice;

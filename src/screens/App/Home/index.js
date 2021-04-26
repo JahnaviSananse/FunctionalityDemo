@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import {connect} from 'react-redux';
 import {DataList} from '../../../redux/actions/loadPost.actions';
+import styles from '../Home/styles';
 
 const Home = props => {
   const [refreshing, setRefreshing] = useState(false);
@@ -34,17 +35,12 @@ const Home = props => {
         />
         <View style={{marginLeft: '10%'}}>
           {console.log('hbchjvdcyjsdvchjsdc', item)}
-          <Text style={{color: 'red'}}> {item.email}</Text>
+          <Text style={styles.emailText}> {item.email}</Text>
           <Text> {item.first_name}</Text>
           <Text> {item.last_name}</Text>
           <Image style={styles.img} source={{uri: item.avatar}} />
         </View>
-        <View
-          style={{
-            borderColor: 'black',
-            borderBottomWidth: 2,
-            // top: 5,
-          }}></View>
+        <View style={styles.borderView}></View>
       </>
     );
   };
@@ -52,21 +48,7 @@ const Home = props => {
   return (
     <>
       {props.loading ? (
-        <View
-          style={{
-            height: '100%',
-            flex: 1,
-            // backgroundColor: 'black',
-            backgroundColor: 'rgba(237, 239, 242,0.5)',
-
-            position: 'absolute',
-            left: 0,
-            right: 0,
-            top: 0,
-            bottom: 0,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
+        <View style={styles.loadingView}>
           <ActivityIndicator size="large" color="#0000ff" />
         </View>
       ) : (
@@ -81,23 +63,6 @@ const Home = props => {
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  stretch: {
-    width: 15,
-    height: 15,
-    top: 20,
-    left: '3%',
-  },
-  img: {
-    width: 70,
-    height: 70,
-    resizeMode: 'stretch',
-    left: '75%',
-    bottom: '40%',
-    borderRadius: 20,
-  },
-});
 
 const mapStateToProps = state => ({
   dataFetch: state.dataPost.dataRespones,

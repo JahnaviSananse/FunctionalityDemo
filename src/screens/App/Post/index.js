@@ -11,6 +11,8 @@ import {
 } from 'react-native';
 import {connect} from 'react-redux';
 import {DataPost} from '../../../redux/actions/loadPost.actions';
+import styles from '../Post/styles';
+
 const Post = props => {
   const [item, setItem] = useState('');
   const [job, setJob] = useState('');
@@ -40,36 +42,17 @@ const Post = props => {
       />
 
       {props.loading ? (
-        <View
-          style={{
-            height: '100%',
-            flex: 1,
-            // backgroundColor: 'black',
-            backgroundColor: 'rgba(237, 239, 242,0.5)',
-
-            position: 'absolute',
-            left: 0,
-            right: 0,
-            top: 0,
-            bottom: 0,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
+        <View style={styles.loadingView}>
           <ActivityIndicator size="large" color="#0000ff" />
         </View>
       ) : props.dataGet ? (
         props.dataGet.map((value, index) => {
           return (
-            <View style={{backgroundColor: 'yellow', margin: 5, padding: 5}}>
-              <Text style={{fontSize: 20}}>
+            <View style={styles.backgroundView}>
+              <Text style={styles.textFormat}>
                 {'Name : ' + value.name + '\n' + 'JOB : ' + value.job}
               </Text>
-              <View
-                style={{
-                  borderColor: 'black',
-                  borderBottomWidth: 2,
-                  // top: 5,
-                }}></View>
+              <View style={styles.borderView}></View>
             </View>
           );
         })
@@ -77,19 +60,6 @@ const Post = props => {
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  name: {
-    height: 40,
-    margin: 12,
-    borderWidth: 2,
-  },
-  job: {
-    height: 40,
-    margin: 12,
-    borderWidth: 2,
-  },
-});
 
 const mapStateToProps = state => ({
   dataGet: state.dataPost.PostResponse,
