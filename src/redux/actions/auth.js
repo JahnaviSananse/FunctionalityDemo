@@ -1,6 +1,7 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import ServerCall from '../../api/serverCall';
 import {LOGIN_DATA} from '../../constants/api';
-import {LOGINDATA, SIGNUP_DATA} from '../types/auth';
+import {LOGINDATA, SIGNUP_DATA, LOGOUT_DATA} from '../types/auth';
 
 // export const LoginSuccess = data => ({
 //   type: LOGINDATA.LOGIN_SUCCESS,
@@ -26,6 +27,8 @@ export const LoginSuccess = data => {
       console.log('^^^^^^^^^^^^^^^^^^^', filterData);
       setTimeout(() => {
         if (filterData) {
+          console.log('))))))))))))))))))', filterData);
+          AsyncStorage.setItem('user', JSON.stringify(filterData));
           returnToDispatch(dispatch, LOGINDATA.LOGIN_SUCCESS, filterData);
           data.props.navigation.navigate('Choice');
         }
@@ -53,6 +56,21 @@ export const SignupSuccess = data => {
     } catch (error) {
       alert(error);
       returnToDispatch(dispatch, SIGNUP_DATA.SIGNUP_STOP, error);
+    }
+  };
+};
+
+export const LogoutSuccess = () => {
+  return async dispatch => {
+    try {
+      returnToDispatch(dispatch, LOGOUT_DATA.LOGOUT_START);
+      setTimeout(() => {
+        AsyncStorage.clear();
+        returnToDispatch(dispatch, LOGOUT_DATA.LOGOUT_SUCCESS);
+      }, 3000);
+    } catch (error) {
+      alert(error);
+      returnToDispatch(dispatch, LOGOUT_DATA.LOGOUT_STOP, error);
     }
   };
 };

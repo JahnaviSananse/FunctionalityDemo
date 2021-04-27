@@ -1,4 +1,4 @@
-import {LOGINDATA, SIGNUP_DATA} from '../types/auth';
+import {LOGINDATA, SIGNUP_DATA, LOGOUT_DATA} from '../types/auth';
 
 const INITIAL_DATA = {
   authUser: [],
@@ -11,6 +11,7 @@ const authReducer = (state = INITIAL_DATA, action) => {
   switch (action.type) {
     case LOGINDATA.LOGIN_START:
     case SIGNUP_DATA.SIGNUP_START:
+    case LOGOUT_DATA.LOGOUT_START:
       return {
         ...state,
         isLoading: true,
@@ -27,8 +28,15 @@ const authReducer = (state = INITIAL_DATA, action) => {
         isLogged: action.payload,
         isLoading: false,
       };
+    case LOGOUT_DATA.LOGOUT_SUCCESS:
+      return {
+        ...state,
+        authUser: [],
+        isLoading: false,
+      };
     case LOGINDATA.LOGIN_STOP:
     case SIGNUP_DATA.SIGNUP_STOP:
+    case LOGOUT_DATA.LOGOUT_STOP:
       return {
         ...state,
         isLoading: false,

@@ -17,10 +17,31 @@ import TextField from '../../../components/TextField/index';
 import {loginValidate} from '../../../utility/util';
 import {renderTabs} from './tabs';
 import {Loader} from '../../../components/Loader/index';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Login = props => {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
+
+  useEffect(() => {
+    async function store() {
+      try {
+        let user = await AsyncStorage.getItem('user');
+        let parsed = JSON.parse(user);
+        console.log('parse<<<<<<<<<<<<<<<<<<<', JSON.parse(user));
+
+        if (parsed) {
+          parsed.props = props;
+          props.LoginSuccess(parsed);
+        }
+        // alert(parsed.email);
+      } catch (error) {
+        alert(error);
+      }
+    }
+
+    store();
+  }, []);
 
   const loginVerify = (email, pass) => {
     // if (loginValidate(email, pass)) {

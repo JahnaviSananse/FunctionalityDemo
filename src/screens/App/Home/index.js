@@ -26,7 +26,7 @@ const Home = props => {
       props.DataList();
       setRefreshing(false);
     }, 3000);
-    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
+    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
   }, []);
 
   return (

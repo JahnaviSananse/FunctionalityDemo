@@ -9,8 +9,9 @@ import {
 } from 'react-native';
 import styles from '../choice/style';
 import Button from '../../../components/Button/index';
-
-const Choice = ({navigation}) => {
+import {connect} from 'react-redux';
+import {LogoutSuccess} from '../../../redux/actions/auth';
+const Choice = props => {
   return (
     <SafeAreaView>
       <View style={styles.mainView}>
@@ -27,9 +28,18 @@ const Choice = ({navigation}) => {
             navigation.navigate('Post');
           }}
         />
+        <Button
+          title="LOG OUT"
+          onPress={() => {
+            props.LogoutSuccess();
+            props.navigation.navigate('Login');
+          }}
+        />
       </View>
     </SafeAreaView>
   );
 };
 
-export default Choice;
+export default connect(null, {
+  LogoutSuccess,
+})(Choice);
