@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
     borderColor: THEME.BLACK,
     borderWidth: 2,
   },
+  touchableView: {alignSelf: 'flex-end'},
   loanText: {
     fontSize: 40,
     marginTop: 15,

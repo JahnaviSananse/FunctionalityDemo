@@ -17,6 +17,12 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     // top: 5,
   },
+  buttonView: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    // backgroundColor: 'yellow',
+    height: '20%',
+  },
   loadingView: {
     height: '100%',
     flex: 1,

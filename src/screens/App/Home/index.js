@@ -11,6 +11,8 @@ import {
 import {connect} from 'react-redux';
 import {DataList} from '../../../redux/actions/post';
 import styles from '../Home/styles';
+import {renderDataList} from './list';
+import {Loader} from '../../../components/Loader';
 
 const Home = props => {
   const [refreshing, setRefreshing] = useState(false);
@@ -26,31 +28,11 @@ const Home = props => {
     }, 3000);
     console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
   }, []);
-  const renderDataList = ({item}) => {
-    return (
-      <>
-        <Image
-          style={styles.stretch}
-          source={require('../../../assets/images/right-arrow.png')}
-        />
-        <View style={{marginLeft: '10%'}}>
-          {console.log('hbchjvdcyjsdvchjsdc', item)}
-          <Text style={styles.emailText}> {item.email}</Text>
-          <Text> {item.first_name}</Text>
-          <Text> {item.last_name}</Text>
-          <Image style={styles.img} source={{uri: item.avatar}} />
-        </View>
-        <View style={styles.borderView}></View>
-      </>
-    );
-  };
 
   return (
     <>
       {props.loading ? (
-        <View style={styles.loadingView}>
-          <ActivityIndicator size="large" color="#0000ff" />
-        </View>
+        <Loader />
       ) : (
         <FlatList
           data={props.dataFetch}

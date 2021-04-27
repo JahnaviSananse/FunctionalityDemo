@@ -13,13 +13,7 @@ import Button from '../../../components/Button/index';
 const Choice = ({navigation}) => {
   return (
     <SafeAreaView>
-      <View
-        style={{
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: 'lightgrey',
-          height: '100%',
-        }}>
+      <View style={styles.mainView}>
         <Button
           // type="fill"
           title=" Get List"

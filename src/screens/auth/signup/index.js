@@ -14,6 +14,8 @@ import {SignupSuccess} from '../../../redux/actions/auth';
 import styles from '../signup/style';
 import TextField from '../../../components/TextField';
 import {signupValidate} from '../../../utility/util';
+import {renderTabs} from './tabs';
+import {Loader} from '../../../components/Loader';
 
 const Signup = props => {
   const [email, setEmail] = useState('');
@@ -96,32 +98,13 @@ const Signup = props => {
     );
   };
 
-  const renderTabs = () => {
-    return (
-      <View>
-        <View style={styles.headView}>
-          <Image
-            style={styles.img}
-            source={require('../../../assets/images/virgo.png')}
-          />
-        </View>
-        <View style={styles.signupView}>
-          <Text style={styles.signupText}>SIGN-UP</Text>
-        </View>
-      </View>
-    );
-  };
-
   return (
     <>
       {props.Loading ? (
-        <View style={styles.loadingView}>
-          <ActivityIndicator size="large" color="#0000ff" />
-        </View>
+        <Loader />
       ) : (
         <SafeAreaView style={styles.container}>
           {renderTabs()}
-
           {renderSignup()}
         </SafeAreaView>
       )}

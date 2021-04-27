@@ -13,6 +13,7 @@ import {DataPost} from '../../../redux/actions/post';
 import styles from '../Post/styles';
 import TextField from '../../../components/TextField/index';
 import Button from '../../../components/Button';
+import {Loader} from '../../../components/Loader';
 
 const Post = props => {
   const [item, setItem] = useState('');
@@ -37,26 +38,13 @@ const Post = props => {
         placeholder={' NAME'}
       />
 
-      {/* <TextInput
-        placeholder="JOB"
-        style={styles.job}
-        onChangeText={text => {
-          setJob(text);
-        }}
-      /> */}
       <TextField
         value={job}
         change={text => setJob(text)}
         placeholder={' JOB'}
       />
 
-      <View
-        style={{
-          alignItems: 'center',
-          justifyContent: 'center',
-          // backgroundColor: 'yellow',
-          height: '20%',
-        }}>
+      <View style={styles.buttonView}>
         <Button
           title=" Post Data"
           onPress={() => {
@@ -68,9 +56,7 @@ const Post = props => {
       </View>
 
       {props.loading ? (
-        <View style={styles.loadingView}>
-          <ActivityIndicator size="large" color="#0000ff" />
-        </View>
+        <Loader />
       ) : props.dataGet ? (
         props.dataGet.map((value, index) => {
           return (

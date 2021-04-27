@@ -14,8 +14,9 @@ import {connect} from 'react-redux';
 import {LoginSuccess} from '../../../redux/actions/auth';
 import styles from '../login/style';
 import TextField from '../../../components/TextField/index';
-
 import {loginValidate} from '../../../utility/util';
+import {renderTabs} from './tabs';
+import {Loader} from '../../../components/Loader/index';
 
 const Login = props => {
   const [email, setEmail] = useState('');
@@ -46,14 +47,6 @@ const Login = props => {
           value={email}
           placeholder={' abc@gmail.com '}
         />
-        {/* 
-        <Text style={styles.headText}> Password : </Text>
-        <TextInput
-          onChangeText={text => setPass(text)}
-          value={pass}
-          placeholder={' Enter Here '}
-          style={styles.textinput}
-        /> */}
 
         <TextField
           title={'Password'}
@@ -62,7 +55,7 @@ const Login = props => {
           placeholder={' Enter Here '}
         />
 
-        <View style={{alignSelf: 'flex-end'}}>
+        <View style={styles.touchableView}>
           <TouchableOpacity
             onPress={() => {
               Alert.alert('Alert', 'Forget Password ?');
@@ -83,28 +76,10 @@ const Login = props => {
     );
   };
 
-  const renderTabs = () => {
-    return (
-      <View>
-        <View style={styles.headView}>
-          <Image
-            style={styles.img}
-            source={require('../../../assets/images/virgo.png')}
-          />
-        </View>
-        <View style={styles.signupView}>
-          <Text style={styles.signupText}>SIGN IN</Text>
-        </View>
-      </View>
-    );
-  };
-
   return (
     <>
       {props.Loading ? (
-        <View style={styles.loadingView}>
-          <ActivityIndicator size="large" color="#0000ff" />
-        </View>
+        <Loader />
       ) : (
         <SafeAreaView style={styles.container}>
           {renderTabs()}
