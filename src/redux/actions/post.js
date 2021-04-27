@@ -35,9 +35,7 @@ export const DataList = () => {
       }, 1500);
     } catch (error) {
       alert(error);
-      setTimeout(() => {
-        returnToDispatch(dispatch, LoadPost.LOADPOST_FAIL, error);
-      }, 1500);
+      returnToDispatch(dispatch, LoadPost.LOADPOST_FAIL, error);
     }
   };
 };
@@ -57,9 +55,8 @@ export const DataPost = item => {
       }, 1500);
     } catch (error) {
       alert(error);
-      setTimeout(() => {
-        returnToDispatch(dispatch, ItemPost.ITEMPOST_STOP, error);
-      }, 2000);
+
+      returnToDispatch(dispatch, ItemPost.ITEMPOST_STOP, error);
     }
   };
 };

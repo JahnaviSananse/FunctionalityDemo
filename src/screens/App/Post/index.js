@@ -63,7 +63,6 @@ const Post = props => {
             props.DataPost({name: item, job: job});
             setItem(' ');
             setJob(' ');
-            return;
           }}
         />
       </View>

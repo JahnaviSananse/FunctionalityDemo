@@ -21,17 +21,11 @@ const Login = props => {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
 
-  const loginVerify = () => {
+  const loginVerify = (email, pass) => {
     // if (loginValidate(email, pass)) {
-    console.log('props.authUser', props.authUser);
-    if (props.authUser[0].email === email && props.authUser[0].pass === pass) {
-      props.LoginSuccess();
-      setTimeout(() => {
-        props.navigation.navigate('Choice');
-      }, 2000);
-    } else {
-      alert('Invalid Details');
-    }
+    console.log('props.authUser', email);
+    props.LoginSuccess({email: email, password: pass, props: props});
+
     // }
   };
 
@@ -80,7 +74,7 @@ const Login = props => {
         <View style={styles.signinButton}>
           <TouchableOpacity
             onPress={() => {
-              loginVerify();
+              loginVerify(email, pass);
             }}>
             <Text style={styles.signinText}> SIGN IN </Text>
           </TouchableOpacity>

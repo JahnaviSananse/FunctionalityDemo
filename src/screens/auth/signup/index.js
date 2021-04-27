@@ -21,7 +21,7 @@ const Signup = props => {
   const [fname, setFname] = useState('');
 
   const signupVerify = () => {
-    props.dataStore({fname: fname, email: email, pass: pass});
+    props.dataStore({name: fname, email: email, password: pass});
     props.navigation.navigate('Login');
   };
 

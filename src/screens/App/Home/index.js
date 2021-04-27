@@ -68,7 +68,5 @@ const mapStateToProps = state => ({
   dataFetch: state.dataPost.dataRespones,
   loading: state.dataPost.isLoading,
 });
-// const mapDispatchToProps = dispatch => ({
-//   data: () => dispatch(DataList()),
-// });
+
 export default connect(mapStateToProps, {DataList})(Home);
