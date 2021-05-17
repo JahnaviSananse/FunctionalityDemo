@@ -65,7 +65,7 @@ export const LogoutSuccess = () => {
     try {
       returnToDispatch(dispatch, LOGOUT_DATA.LOGOUT_START);
       setTimeout(() => {
-        AsyncStorage.clear();
+        AsyncStorage.removeItem('user');
         returnToDispatch(dispatch, LOGOUT_DATA.LOGOUT_SUCCESS);
       }, 3000);
     } catch (error) {
